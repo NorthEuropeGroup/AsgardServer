@@ -6,6 +6,7 @@ public class MsgData
 	private String receiver;
 	public ArrayList<User> userList;
 	public BattleCard bc;
+	public Action action;
 	/*public MsgData()
 	{
 		this.name = new String();
@@ -19,6 +20,7 @@ public class MsgData
 		this.receiver = new String();
 		this.userList = new ArrayList<User>();
 		this.bc = new BattleCard();
+		this.action = new Action();
 	}
 	public MsgData(String name, String type, String sender)
 	{
@@ -28,11 +30,15 @@ public class MsgData
 		this.receiver = new String();
 		this.userList = new ArrayList<User>();
 		this.bc = new BattleCard();
+		this.action = new Action();
 	}
 	public String getName() return name;
 	public String getType() return type;
 	public String getSender() return sender;
 	public String getReceiver() return receiver;
+	public BattleCard getBC() return bc;
+	public Action getAction() return action;
+	
 	public void setName(String n) name = n;
 	public void setType(String t) type = t;
 	public void setSender(String s) sender = s;
