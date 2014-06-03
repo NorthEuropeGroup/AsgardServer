@@ -1,7 +1,7 @@
 import java.util.*;
 public class BattleField
 {
-	public ArrayList<String> IDs
+	public ArrayList<String> IDs;
 	public ArrayList<AllCard> actionOrder;
 	public ArrayList<BattleCard> team;
 	public BattleField(String ID_A, String ID_B)
@@ -9,6 +9,8 @@ public class BattleField
 		IDs = new ArrayList<String>();
 		IDs.add(ID_A);
 		IDs.add(ID_B);
+		actionOrder = new ArrayList<AllCard>();
+		team = new ArrayList<BattleCard>();
 	}
 	public BattleField(BattleCard b1, BattleCard b2)
 	{
@@ -16,8 +18,18 @@ public class BattleField
 		team = new ArrayList<BattleCard>();
 		team.add(b1);
 		team.add(b2);
+		IDs = new ArrayList<String>();
+		IDs.add(b1.getMaster());
+		IDs.add(b2.getMaster());
 	}
-	public determineOrder()
+	
+	public void setTeam(BattleCard b1, BattleCard b2)
+	{
+		team.add(b1);
+		team.add(b2);
+		determineOrder();
+	}
+	public void determineOrder()
 	{
 		ArrayList<AllCard> temp = new ArrayList<AllCard>();
 		int max_agi = 0;
