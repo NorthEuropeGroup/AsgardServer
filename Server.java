@@ -62,7 +62,7 @@ public class Server {
 		}catch(Exception e){
 		}
 	}
-	public void createNewUser(MsgData userName, Socket socket)
+	public void createNewUser(final MsgData userName, final Socket socket)
 	{
 		
 		Thread t = new Thread(new Runnable(){//the thread receive MsgData
