@@ -15,5 +15,8 @@ public class BattleCard
 		cardSelect.add(c1);
 		cardSelect.add(c2);
 	}
-	public String getMaster() return master;
+	public String getMaster() 
+	{
+		return master;
+	}
 }

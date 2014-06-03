@@ -11,9 +11,9 @@ public class Server {
 	
 	private ArrayList<User> userList;//store users data
 	private User tempUser;//receive the user data from client
-	private MsgData message, ACK_Msg;
+	private MsgData message, ACK_Msg, READY_Msg;
 	private int userIndex;//the non-changeable index of user
-	
+	private int sendIndex;
 	
 	
 	private ArrayList <ObjectOutputStream> S_outV;
@@ -22,7 +22,9 @@ public class Server {
 	public Server()
 	{
 		userIndex = 0;
+		sendIndex = 0;
 		ACK_Msg = new MsgData("none","ACK","Server");
+		READY_Msg = new MsgData("none","READY","Server");
 	}
 	/*public static String bytetoString(byte [] data1)
 	  {
@@ -34,7 +36,7 @@ public class Server {
 			  ans = ans + (char)data1[i];
 		  }
 		  return ans;
-	  */}
+	  }*/
 	public void go()
 	{
 		try{
@@ -62,7 +64,7 @@ public class Server {
 	}
 	public void createNewUser(MsgData userName, Socket socket)
 	{
-		int sendIndex;
+		
 		Thread t = new Thread(new Runnable(){//the thread receive MsgData
 			public void run(){
 				try{
@@ -92,12 +94,22 @@ public class Server {
 							S_outV.get(sendIndex).writeObject(ACK_Msg);
 							S_outV.get(sendIndex).flush();//reply ack
 							
-							sendIndex = getMsgDestIndex(messge.getName());
-							//String s = message.getSender();
-							//message.setName(s);
-							message.setName(message.getSender());
-							S_outV.get(sendIndex).writeObject(message);
-							S_outV.get(sendIndex).flush();
+							sendIndex = getMsgDestIndex(message.getReceiver());
+							if(!userList.get(sendIndex).getBattleStatus())//the value is false if the user isn't in battle
+							{
+								//String s = message.getSender();
+								//message.setName(s);
+								message.setName(message.getSender());
+								S_outV.get(sendIndex).writeObject(message);
+								S_outV.get(sendIndex).flush();
+							}
+							else
+							{
+								sendIndex = getMsgDestIndex(message.getSender());
+								message.setType("REJECT");
+								S_outV.get(sendIndex).writeObject(message);
+								S_outV.get(sendIndex).flush();
+							}
 						}
 						else if(message.getType().equals("ANSWER"))
 						{
@@ -122,6 +134,9 @@ public class Server {
 								S_outV.get(sendIndex).flush();
 							}
 						}
+						//else if(message.getType().equals("CARDSELECT"))
+						//{
+						//}
 						/*else if(message.getType().equals("GETCARD"))
 						{
 							int cardIndex;//1~15 for temporary
@@ -148,8 +163,9 @@ public class Server {
 							S_outV.remove(sendIndex);
 							S_inV.remove(sendIndex);
 						}
+					}
 				}catch(Exception ex){
-					System.out.println("有一個連接離開");
+					System.out.println("one user disconnect");
 					ex.printStackTrace();
 				}
 			}
@@ -166,7 +182,7 @@ public class Server {
 		return -1;
 	}
 			
-			while (true) {
+			/*while (true) {
 				Socket socket = serverSocket.accept();
 				System.out.println("Ac");
 				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -188,9 +204,10 @@ public class Server {
 		{
 			
 		}
-	}
+	}*/
 	public  static  void main(String[] args)
 	{
-		
+		Server s = new Server();
+		s.go();
 	}
 }

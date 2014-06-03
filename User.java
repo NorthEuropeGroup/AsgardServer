@@ -13,11 +13,17 @@ public class User
 	{
 		this.ID = ID;
 		this.inBattle = false;
-		this.index = index;
+		//this.index = index;
 	}
-	public String getID() return ID;
+	public String getID() 
+	{
+		return ID;
+	}
 	//public int getIndex() return index;
-	public boolean getBattleStatus() return inBattle;
+	public boolean getBattleStatus()
+	{
+		return inBattle;
+	}
 	public void switchBattleFlag()
 	{
 		if(inBattle == false)

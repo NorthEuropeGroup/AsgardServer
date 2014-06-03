@@ -1,3 +1,4 @@
+import java.util.*;
 public class MsgData
 {
 	private String name;
@@ -32,15 +33,45 @@ public class MsgData
 		this.bc = new BattleCard();
 		this.action = new Action();
 	}
-	public String getName() return name;
-	public String getType() return type;
-	public String getSender() return sender;
-	public String getReceiver() return receiver;
-	public BattleCard getBC() return bc;
-	public Action getAction() return action;
+	public String getName()
+	{
+		return name;
+	}
+	public String getType()
+	{
+		return type;
+	}
+	public String getSender()
+	{
+		return sender;
+	}
+	public String getReceiver()
+	{	
+		return receiver;
+	}
+	public BattleCard getBC()
+	{	
+		return bc;
+	}
+	public Action getAction()
+	{
+		return action;
+	}
 	
-	public void setName(String n) name = n;
-	public void setType(String t) type = t;
-	public void setSender(String s) sender = s;
-	public void setReceiver(String r) receiver = r;
+	public void setName(String n)
+	{	
+		name = n;
+	}
+	public void setType(String t) 
+	{
+		type = t;
+	}
+	public void setSender(String s) 
+	{
+		sender = s;
+	}
+	public void setReceiver(String r) 
+	{
+		receiver = r;
+	}
 }

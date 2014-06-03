@@ -15,7 +15,16 @@ public class Action
 		this.act = act;
 		this.target = t;
 	}
-	public String getAttacker() return attacker;
-	public String getAct() return act;
-	public String getTarget() return target;
+	public String getAttacker()
+	{
+		return attacker;
+	}
+	public String getAct() 
+	{
+		return act;
+	}
+	public String getTarget() 
+	{
+		return target;
+	}
 }
