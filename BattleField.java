@@ -1,9 +1,16 @@
 import java.util.*;
 public class BattleField
 {
+	public ArrayList<String> IDs
 	public ArrayList<AllCard> actionOrder;
 	public ArrayList<BattleCard> team;
-	public BattleCard(BattleCard b1, BattleCard b2)
+	public BattleField(String ID_A, String ID_B)
+	{
+		IDs = new ArrayList<String>();
+		IDs.add(ID_A);
+		IDs.add(ID_B);
+	}
+	public BattleField(BattleCard b1, BattleCard b2)
 	{
 		actionOrder = new ArrayList<AllCard>();
 		team = new ArrayList<BattleCard>();

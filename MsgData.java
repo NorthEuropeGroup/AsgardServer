@@ -5,9 +5,11 @@ public class MsgData
 	private String type;
 	private String sender;
 	private String receiver;
+	private BattleCard bc;
+	private Action action;
+	
 	public ArrayList<User> userList;
-	public BattleCard bc;
-	public Action action;
+	
 	/*public MsgData()
 	{
 		this.name = new String();
@@ -73,5 +75,13 @@ public class MsgData
 	public void setReceiver(String r) 
 	{
 		receiver = r;
+	}
+	public void setBC(BattleCard b) 
+	{
+		bc = b;
+	}
+	public void setAction(Action a) 
+	{
+		action = a;
 	}
 }
