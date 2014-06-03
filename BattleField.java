@@ -6,6 +6,7 @@ public class BattleField
 	public BattleCard(BattleCard b1, BattleCard b2)
 	{
 		actionOrder = new ArrayList<AllCard>();
+		team = new ArrayList<BattleCard>();
 		team.add(b1);
 		team.add(b2);
 	}
