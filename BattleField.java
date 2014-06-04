@@ -23,12 +23,6 @@ public class BattleField
 		IDs.add(b2.getMaster());
 	}
 	
-	public void setTeam(BattleCard b1, BattleCard b2)
-	{
-		team.add(b1);
-		team.add(b2);
-		determineOrder();
-	}
 	public void determineOrder()
 	{
 		ArrayList<AllCard> temp = new ArrayList<AllCard>();

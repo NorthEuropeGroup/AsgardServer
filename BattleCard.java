@@ -1,5 +1,5 @@
 import java.util.*;
-public class BattleCard
+public class BattleCard implements java.io.Serializable
 {
 	private String master;
 	public ArrayList<AllCard> cardSelect;

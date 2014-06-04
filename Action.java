@@ -1,4 +1,4 @@
-public class Action
+public class Action implements java.io.Serializable
 {
 	private String attacker;
 	private String act;
